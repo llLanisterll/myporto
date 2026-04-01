@@ -16,5 +16,8 @@
 		"tailwindcss": "^4.2.2",
 		"vite": "^6.2.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@sveltejs/adapter-vercel": "^6.3.3"
+	}
 }

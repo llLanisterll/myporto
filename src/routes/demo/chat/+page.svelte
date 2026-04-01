@@ -95,7 +95,7 @@
                 <h2 class="text-sm font-bold">Alex (Tech Lead)</h2>
                 <p class="text-[11px] text-white/40">Online</p>
             </div>
-            <button class="ml-auto text-white/40 hover:text-teal-400 transition-colors">
+            <button aria-label="Cari pesan" class="ml-auto text-white/40 hover:text-teal-400 transition-colors">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
             </button>
         </div>
@@ -116,8 +116,8 @@
         <!-- Input Area -->
         <div class="p-4 border-t border-white/[0.05] bg-white/[0.01]">
             <form id="chat-form" class="relative flex items-center">
-                <input type="text" id="chat-input" placeholder="Tulis pesan..." class="w-full bg-white/[0.05] border border-white/10 rounded-full py-3 px-5 pr-14 text-[13px] outline-none focus:border-teal-500/50 focus:bg-white/[0.08] transition-all text-white placeholder-white/30">
-                <button type="submit" class="absolute right-2 w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center text-black hover:scale-105 transition-transform">
+                <input type="text" id="chat-input" aria-label="Input pesan" placeholder="Tulis pesan..." class="w-full bg-white/[0.05] border border-white/10 rounded-full py-3 px-5 pr-14 text-[13px] outline-none focus:border-teal-500/50 focus:bg-white/[0.08] transition-all text-white placeholder-white/30">
+                <button type="submit" aria-label="Kirim pesan" class="absolute right-2 w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center text-black hover:scale-105 transition-transform">
                     <svg class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
                 </button>
             </form>

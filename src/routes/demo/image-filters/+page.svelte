@@ -80,7 +80,7 @@
             <div class="glass-panel rounded-3xl p-8 space-y-6">
                 <div>
                     <div class="flex justify-between mb-2">
-                        <label class="text-[13px] font-semibold text-white/80">Grayscale</label>
+                        <label for="grayscale" class="text-[13px] font-semibold text-white/80">Grayscale</label>
                         <span id="val-gray" class="text-xs text-purple-400">0%</span>
                     </div>
                     <input type="range" id="grayscale" min="0" max="100" value="0" class="w-full accent-purple-500 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer">
@@ -88,7 +88,7 @@
                 
                 <div>
                     <div class="flex justify-between mb-2">
-                        <label class="text-[13px] font-semibold text-white/80">Sepia</label>
+                        <label for="sepia" class="text-[13px] font-semibold text-white/80">Sepia</label>
                         <span id="val-sepia" class="text-xs text-purple-400">0%</span>
                     </div>
                     <input type="range" id="sepia" min="0" max="100" value="0" class="w-full accent-purple-500 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer">
@@ -96,7 +96,7 @@
 
                 <div>
                     <div class="flex justify-between mb-2">
-                        <label class="text-[13px] font-semibold text-white/80">Blur</label>
+                        <label for="blur" class="text-[13px] font-semibold text-white/80">Blur</label>
                         <span id="val-blur" class="text-xs text-purple-400">0px</span>
                     </div>
                     <input type="range" id="blur" min="0" max="20" value="0" class="w-full accent-purple-500 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer">
@@ -104,7 +104,7 @@
 
                 <div>
                     <div class="flex justify-between mb-2">
-                        <label class="text-[13px] font-semibold text-white/80">Brightness</label>
+                        <label for="brightness" class="text-[13px] font-semibold text-white/80">Brightness</label>
                         <span id="val-bright" class="text-xs text-purple-400">100%</span>
                     </div>
                     <input type="range" id="brightness" min="0" max="200" value="100" class="w-full accent-purple-500 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer">
@@ -112,7 +112,7 @@
 
                 <div>
                     <div class="flex justify-between mb-2">
-                        <label class="text-[13px] font-semibold text-white/80">Contrast</label>
+                        <label for="contrast" class="text-[13px] font-semibold text-white/80">Contrast</label>
                         <span id="val-contrast" class="text-xs text-purple-400">100%</span>
                     </div>
                     <input type="range" id="contrast" min="0" max="200" value="100" class="w-full accent-purple-500 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer">
@@ -120,7 +120,7 @@
 
                 <div>
                     <div class="flex justify-between mb-2">
-                        <label class="text-[13px] font-semibold text-white/80">Hue Rotate</label>
+                        <label for="hue" class="text-[13px] font-semibold text-white/80">Hue Rotate</label>
                         <span id="val-hue" class="text-xs text-purple-400">0deg</span>
                     </div>
                     <input type="range" id="hue" min="0" max="360" value="0" class="w-full accent-purple-500 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer">

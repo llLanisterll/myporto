@@ -122,7 +122,7 @@
             <div class="glass-panel rounded-2xl p-8 flex flex-col items-center justify-between h-80">
                 <div class="flex-1 flex items-center justify-center w-full">
                     <!-- Hover to trigger pulse -->
-                    <button class="w-20 h-20 rounded-full bg-white/[0.03] border border-yellow-500/50 text-yellow-500 flex items-center justify-center anim-ring hover:bg-yellow-500 hover:text-black transition-colors cursor-pointer outline-none">
+                    <button aria-label="Play animation" class="w-20 h-20 rounded-full bg-white/[0.03] border border-yellow-500/50 text-yellow-500 flex items-center justify-center anim-ring hover:bg-yellow-500 hover:text-black transition-colors cursor-pointer outline-none">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     </button>
                 </div>

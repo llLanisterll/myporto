@@ -219,17 +219,17 @@
                     <h2 class="text-lg font-bold mb-6">Coba Isi Form</h2>
                     <form id="demo-form" class="space-y-5" novalidate>
                         <div>
-                            <label class="block text-xs text-white/40 mb-2 font-medium uppercase tracking-wider">Nama Lengkap</label>
+                            <label for="name" class="block text-xs text-white/40 mb-2 font-medium uppercase tracking-wider">Nama Lengkap</label>
                             <input type="text" id="name" class="form-input" placeholder="Masukkan nama lengkapmu" autocomplete="off">
                             <p class="error-msg" id="name-error">Nama minimal 3 karakter</p>
                         </div>
                         <div>
-                            <label class="block text-xs text-white/40 mb-2 font-medium uppercase tracking-wider">Email</label>
+                            <label for="email" class="block text-xs text-white/40 mb-2 font-medium uppercase tracking-wider">Email</label>
                             <input type="email" id="email" class="form-input" placeholder="contoh@email.com" autocomplete="off">
                             <p class="error-msg" id="email-error">Format email tidak valid</p>
                         </div>
                         <div>
-                            <label class="block text-xs text-white/40 mb-2 font-medium uppercase tracking-wider">Password</label>
+                            <label for="password" class="block text-xs text-white/40 mb-2 font-medium uppercase tracking-wider">Password</label>
                             <input type="password" id="password" class="form-input" placeholder="Minimal 8 karakter" autocomplete="off">
                             <p class="error-msg" id="password-error">Password minimal 8 karakter</p>
                             <div class="flex gap-1 mt-2" id="strength-bar">
@@ -241,7 +241,7 @@
                             <p class="text-[11px] text-white/20 mt-1" id="strength-text"></p>
                         </div>
                         <div>
-                            <label class="block text-xs text-white/40 mb-2 font-medium uppercase tracking-wider">Pesan</label>
+                            <label for="message" class="block text-xs text-white/40 mb-2 font-medium uppercase tracking-wider">Pesan</label>
                             <textarea id="message" class="form-input" rows="3" placeholder="Tulis pesan singkat..." style="resize:none"></textarea>
                             <div class="flex justify-between mt-1">
                                 <p class="error-msg" id="message-error">Pesan minimal 10 karakter</p>
@@ -257,19 +257,19 @@
                     <h2 class="text-lg font-bold mb-4">Cara Implementasi</h2>
                     <div class="code-block mb-6">
                         <span class="code-comment">// Real-time validation</span><br>
-                        <span class="code-keyword">function</span> validateEmail(email) {<br>
+                        <span class="code-keyword">function</span> validateEmail(email) {'{'}<br>
                         &nbsp;&nbsp;<span class="code-keyword">const</span> regex = <span class="code-string">/^[^\s@]+@[^\s@]+\.[^\s@]+$/</span>;<br>
                         &nbsp;&nbsp;<span class="code-keyword">return</span> regex.test(email);<br>
-                        }<br><br>
+                        {'}'}<br><br>
                         <span class="code-comment">// Password strength checker</span><br>
-                        <span class="code-keyword">function</span> checkStrength(pw) {<br>
+                        <span class="code-keyword">function</span> checkStrength(pw) {'{'}<br>
                         &nbsp;&nbsp;<span class="code-keyword">let</span> score = 0;<br>
                         &nbsp;&nbsp;<span class="code-keyword">if</span> (pw.length >= 8) score++;<br>
                         &nbsp;&nbsp;<span class="code-keyword">if</span> (<span class="code-string">/[A-Z]/</span>.test(pw)) score++;<br>
                         &nbsp;&nbsp;<span class="code-keyword">if</span> (<span class="code-string">/[0-9]/</span>.test(pw)) score++;<br>
                         &nbsp;&nbsp;<span class="code-keyword">if</span> (<span class="code-string">/[^A-Za-z0-9]/</span>.test(pw)) score++;<br>
                         &nbsp;&nbsp;<span class="code-keyword">return</span> score;<br>
-                        }<br><br>
+                        {'}'}<br><br>
                         <span class="code-comment">// Visual feedback</span><br>
                         input.classList.toggle(<span class="code-string">'error'</span>, !isValid);<br>
                         input.classList.toggle(<span class="code-string">'success'</span>, isValid);

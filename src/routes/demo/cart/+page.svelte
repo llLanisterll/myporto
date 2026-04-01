@@ -170,7 +170,7 @@
         <div id="cart-sidebar" class="absolute top-0 right-0 bottom-0 w-full max-w-md glass-panel bg-[#0a0a0a]/95 border-l border-white/[0.05] shadow-2xl translate-x-full transition-transform duration-500 flex flex-col">
             <div class="px-6 py-5 border-b border-white/[0.05] flex items-center justify-between">
                 <h2 class="text-lg font-bold">Keranjang Belanja</h2>
-                <button id="close-cart" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors">
+                <button id="close-cart" aria-label="Tutup keranjang" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors">
                     <svg class="w-4 h-4 text-white/50 hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
             </div>

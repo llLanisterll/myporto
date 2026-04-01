@@ -265,20 +265,20 @@
                 </div>
                 <pre class="mt-4 text-xs demo-text-secondary overflow-x-auto leading-relaxed"><code>// Toggle dark/light mode
 const toggle = document.getElementById('theme-toggle');
-toggle.addEventListener('click', () => {
+toggle.addEventListener('click', () =&gt; {'{'} 
     document.body.classList.toggle('light');
     // Semua komponen otomatis berubah
     // karena menggunakan CSS custom properties
-});
+{'}'});
 
-:root {
+:root {'{'} 
     --bg-primary: #050505;     /* Dark */
     --text-primary: #ffffff;
-}
-.light {
+{'}'}
+.light {'{'} 
     --bg-primary: #fafafa;     /* Light */
     --text-primary: #111111;
-}</code></pre>
+{'}'}</code></pre>
             </div>
         </div>
     </div>

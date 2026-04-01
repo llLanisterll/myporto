@@ -14,6 +14,10 @@
 
             label.textContent = btn.textContent.trim() + ' — ' + width;
         }
+
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.addEventListener('click', () => setSize(btn));
+        });
     
   });
 </script>
@@ -93,13 +97,13 @@
 
             
             <div class="flex items-center justify-center gap-3 mb-8">
-                <button class="size-btn active" data-width="100%" onclick="setSize(this)">
+                <button class="size-btn active" data-width="100%">
                     🖥️ Desktop
                 </button>
-                <button class="size-btn" data-width="768px" onclick="setSize(this)">
+                <button class="size-btn" data-width="768px">
                     📱 Tablet
                 </button>
-                <button class="size-btn" data-width="375px" onclick="setSize(this)">
+                <button class="size-btn" data-width="375px">
                     📲 Mobile
                 </button>
             </div>
@@ -115,7 +119,7 @@
                         </div>
                         <span id="size-label" class="text-[11px] text-white/25 ml-2">Desktop — 100%</span>
                     </div>
-                    <iframe src="https://ppid-sulselprov.vercel.app/" loading="lazy"></iframe>
+                    <iframe src="https://ppid-sulselprov.vercel.app/" loading="lazy" title="Preview Website PPID Sulsel"></iframe>
                 </div>
             </div>
 
