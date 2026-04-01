@@ -1,12 +1,7 @@
 node_modules
+.svelte-kit
+build
 .env
-/vendor
-/storage/*.key
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
-/.fleet
-/.idea
-/.vscode
+.env.*
+!.env.example
+.DS_Store
