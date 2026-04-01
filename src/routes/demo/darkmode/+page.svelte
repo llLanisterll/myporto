@@ -108,7 +108,7 @@
 </svelte:head>
 
 <!-- Floating Back Button -->
-    <a href="/#skills" class="fixed top-6 left-6 z-50 inline-flex items-center gap-2 px-5 py-2.5 rounded-full shadow-lg backdrop-blur-md transition-all font-medium text-[13px] group" style="background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-muted);">
+    <a href="../../#skills" class="fixed top-6 left-6 z-50 inline-flex items-center gap-2 px-5 py-2.5 rounded-full shadow-lg backdrop-blur-md transition-all font-medium text-[13px] group" style="background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-muted);">
         <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
         Kembali
     </a>
