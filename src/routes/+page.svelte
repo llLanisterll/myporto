@@ -74,14 +74,16 @@
         requestAnimationFrame(()=>{roleText.style.opacity='1';roleText.style.transform='translateY(0)';});},400);
     },3000);
 
-    const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
-    document.querySelectorAll('.reveal,.stagger').forEach(el=>observer.observe(el));
+    setTimeout(() => {
+      const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+      document.querySelectorAll('.reveal,.stagger').forEach(el=>observer.observe(el));
+    }, 300);
 
     const pl=document.getElementById('preloader'),bw=document.getElementById('body-wrapper');
     if(sessionStorage.getItem('portfolioLoaded')){
       if(pl)pl.style.display='none';
       if(bw){bw.classList.remove('overflow-hidden');bw.classList.add('overflow-x-hidden');}
-      setTimeout(() => showIframes = true, 500);
+      showIframes = true; // Inject immedately on subsequent navigation
     }
     else{
       sessionStorage.setItem('portfolioLoaded','true');
@@ -94,10 +96,10 @@
               bw.classList.remove('overflow-hidden');
               bw.classList.add('overflow-x-hidden');
             }
-            setTimeout(() => showIframes = true, 500);
+            showIframes = true; // Trigger iframe injection exactly when preloader is removed
           },700);
         }
-      },3800);
+      },3500); // Wait 3.5s (before 4.2s failsafe)
     }
 
     const handleAnchorClick = (e) => {
