@@ -1,19 +1,21 @@
 <script>
-  import { onMount } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
 
   let isLight = $state(false);
 
-  onMount(() => {
-    // Svelte 5 state handles the UI updates gracefully
-    const body = document.body;
-    
-    // Check initial preference from localStorage if we had one, but default to dark for demo
-    isLight = body.classList.contains('light');
+  function toggleTheme() {
+    document.body.classList.toggle('light');
+    isLight = document.body.classList.contains('light');
+  }
 
-    document.getElementById('theme-toggle-btn').addEventListener('click', () => {
-        body.classList.toggle('light');
-        isLight = body.classList.contains('light');
-    });
+  onMount(() => {
+    // Check initial preference from body
+    isLight = document.body.classList.contains('light');
+  });
+
+  onDestroy(() => {
+    // Ensure the light mode class doesn't leak to the homepage when navigating away
+    document.body.classList.remove('light');
   });
 </script>
 
@@ -161,7 +163,7 @@
             <span class="text-xs font-semibold tracking-[0.2em] uppercase theme-transition" style="color: var(--text-secondary);">
                 {isLight ? 'Light Mode' : 'Dark Mode'}
             </span>
-            <div class="toggle-wrapper theme-transition" id="theme-toggle-btn">
+            <div class="toggle-wrapper theme-transition" id="theme-toggle-btn" role="button" aria-label="Toggle Theme" tabindex="0" onclick={toggleTheme} onkeydown={(e) => e.key === 'Enter' && toggleTheme()}>
                 <div class="toggle-thumb">
                     {#if isLight}
                         <svg class="toggle-icon" fill="currentColor" viewBox="0 0 20 20">
