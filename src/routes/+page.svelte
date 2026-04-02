@@ -80,30 +80,31 @@
     if(sessionStorage.getItem('portfolioLoaded')){if(pl)pl.style.display='none';if(bw){bw.classList.remove('overflow-hidden');bw.classList.add('overflow-x-hidden');}}
     else{sessionStorage.setItem('portfolioLoaded','true');setTimeout(()=>{if(pl){pl.style.opacity='0';setTimeout(()=>{pl.remove();if(bw){bw.classList.remove('overflow-hidden');bw.classList.add('overflow-x-hidden');}},700);}},4000);}
 
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click',e=>{
-        const href = a.getAttribute('href');
-        if (href === '#') {
+    const handleAnchorClick = (e) => {
+      const anchor = e.target.closest('a[href^="#"]');
+      if (!anchor) return;
+      const href = anchor.getAttribute('href');
+      if (href === '#') {
+        e.preventDefault();
+        window.scrollTo({top:0, behavior:'smooth'});
+        return;
+      }
+      try {
+        const t = document.querySelector(href);
+        if (t) {
           e.preventDefault();
-          window.scrollTo({top:0, behavior:'smooth'});
-          return;
+          t.scrollIntoView({behavior:'smooth', block:'start'});
         }
-        try {
-          const t=document.querySelector(href);
-          if(t){
-            e.preventDefault();
-            t.scrollIntoView({behavior:'smooth',block:'start'});
-          }
-        } catch (err) {
-          console.error('Invalid selector:', href);
-        }
-      });
-    });
+      } catch (err) {
+        console.error('Invalid selector:', href);
+      }
+    };
+    document.addEventListener('click', handleAnchorClick);
 
     const handleMouse=e=>{if(window.scrollY<window.innerHeight&&parallaxText){const x=(e.clientX/window.innerWidth-0.5)*20,y=(e.clientY/window.innerHeight-0.5)*20;requestAnimationFrame(()=>{parallaxText.style.transform=`translate(${x}px, ${y}px)`;});}};
     document.addEventListener('mousemove',handleMouse);
 
-    return()=>{window.removeEventListener('scroll',handleScroll);clearInterval(roleInterval);observer.disconnect();document.removeEventListener('mousemove',handleMouse);};
+    return()=>{window.removeEventListener('scroll',handleScroll);clearInterval(roleInterval);observer.disconnect();document.removeEventListener('mousemove',handleMouse);document.removeEventListener('click',handleAnchorClick);};
   });
 </script>
 
@@ -472,7 +473,7 @@
             <div class="stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
 
                 
-                <a href="demo/darkmode" class="project-card group block rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-indigo-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(99,102,241,0.15)] relative">
+                <a href="/demo/darkmode" class="project-card group block rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-indigo-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(99,102,241,0.15)] relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
                     <div class="aspect-[16/10] flex items-center justify-center p-8 relative border-b border-white/[0.04]">
                         <div class="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.03)_1px,_transparent_1px)]" style="background-size: 16px 16px;"></div>
@@ -509,7 +510,7 @@
                 </a>
 
                 
-                <a href="demo/responsive" class="project-card group block rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-violet-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(139,92,246,0.15)] relative">
+                <a href="/demo/responsive" class="project-card group block rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-violet-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(139,92,246,0.15)] relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
                     <div class="aspect-[16/10] flex items-center justify-center p-8 relative border-b border-white/[0.04]">
                         <div class="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.03)_1px,_transparent_1px)]" style="background-size: 16px 16px;"></div>
@@ -552,7 +553,7 @@
                 </a>
 
                 
-                <a href="demo/form-validation" class="project-card group block rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(16,185,129,0.15)] relative">
+                <a href="/demo/form-validation" class="project-card group block rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(16,185,129,0.15)] relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
                     <div class="aspect-[16/10] flex items-center justify-center p-8 relative border-b border-white/[0.04]">
                         <div class="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.03)_1px,_transparent_1px)]" style="background-size: 16px 16px;"></div>
@@ -585,7 +586,7 @@
                 </a>
 
                 
-                <a href="demo/api-fetch" class="project-card group block rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-cyan-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(6,182,212,0.15)] relative">
+                <a href="/demo/api-fetch" class="project-card group block rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-cyan-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(6,182,212,0.15)] relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
                     <div class="aspect-[16/10] flex items-center justify-center p-8 relative border-b border-white/[0.04] overflow-hidden">
                         <div class="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.03)_1px,_transparent_1px)]" style="background-size: 16px 16px;"></div>
@@ -623,7 +624,7 @@
                 </a>
 
                 
-                <a href="demo/drag-drop" class="project-card group block rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-pink-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(236,72,153,0.15)] relative">
+                <a href="/demo/drag-drop" class="project-card group block rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-pink-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(236,72,153,0.15)] relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-pink-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
                     <div class="aspect-[16/10] flex items-center justify-center p-8 relative border-b border-white/[0.04]">
                         <div class="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.03)_1px,_transparent_1px)]" style="background-size: 16px 16px;"></div>
@@ -655,7 +656,7 @@
                 </a>
 
                 
-                <a href="demo/animations" class="project-card group block rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-yellow-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(234,179,8,0.15)] relative">
+                <a href="/demo/animations" class="project-card group block rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-yellow-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(234,179,8,0.15)] relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
                     <div class="aspect-[16/10] flex items-center justify-center p-8 relative border-b border-white/[0.04]">
                         <div class="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.03)_1px,_transparent_1px)]" style="background-size: 16px 16px;"></div>
@@ -681,7 +682,7 @@
                 </a>
 
                 
-                <a href="demo/charts" class="project-card hidden-demo hidden group rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-blue-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(59,130,246,0.15)] relative">
+                <a href="/demo/charts" class="project-card hidden-demo hidden group rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-blue-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(59,130,246,0.15)] relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
                     <div class="aspect-[16/10] flex items-center justify-center p-8 relative border-b border-white/[0.04]">
                         <div class="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.03)_1px,_transparent_1px)]" style="background-size: 16px 16px;"></div>
@@ -705,7 +706,7 @@
                 </a>
 
                 
-                <a href="demo/chat" class="project-card hidden-demo hidden group rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-teal-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(20,184,166,0.15)] relative">
+                <a href="/demo/chat" class="project-card hidden-demo hidden group rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-teal-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(20,184,166,0.15)] relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-teal-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
                     <div class="aspect-[16/10] flex flex-col justify-end p-6 relative border-b border-white/[0.04]">
                         <div class="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.03)_1px,_transparent_1px)]" style="background-size: 16px 16px;"></div>
@@ -733,7 +734,7 @@
                 </a>
 
                 
-                <a href="demo/image-filters" class="project-card hidden-demo hidden group rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-purple-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(168,85,247,0.15)] relative">
+                <a href="/demo/image-filters" class="project-card hidden-demo hidden group rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-purple-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(168,85,247,0.15)] relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
                     <div class="aspect-[16/10] flex items-center justify-center p-8 relative border-b border-white/[0.04]">
                         <div class="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.03)_1px,_transparent_1px)]" style="background-size: 16px 16px;"></div>
@@ -757,7 +758,7 @@
                 </a>
 
                 
-                <a href="demo/cart" class="project-card hidden-demo hidden group rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(249,115,22,0.15)] relative">
+                <a href="/demo/cart" class="project-card hidden-demo hidden group rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(249,115,22,0.15)] relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
                     <div class="aspect-[16/10] flex items-center justify-center p-8 relative border-b border-white/[0.04]">
                         <div class="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.03)_1px,_transparent_1px)]" style="background-size: 16px 16px;"></div>
@@ -783,7 +784,7 @@
                 </a>
 
                 
-                <a href="demo/multistep-form" class="project-card hidden-demo hidden group rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-lime-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(132,204,22,0.15)] relative">
+                <a href="/demo/multistep-form" class="project-card hidden-demo hidden group rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-lime-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(132,204,22,0.15)] relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-lime-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
                     <div class="aspect-[16/10] flex items-center justify-center p-8 relative border-b border-white/[0.04]">
                         <div class="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.03)_1px,_transparent_1px)]" style="background-size: 16px 16px;"></div>
@@ -809,7 +810,7 @@
                 </a>
 
                 
-                <a href="demo/skeleton" class="project-card hidden-demo hidden group rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-gray-400/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(156,163,175,0.15)] relative">
+                <a href="/demo/skeleton" class="project-card hidden-demo hidden group rounded-2xl bg-[#050505] border border-white/[0.06] overflow-hidden hover:border-gray-400/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_-15px_rgba(156,163,175,0.15)] relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-gray-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
                     <div class="aspect-[16/10] flex items-center justify-center p-8 relative border-b border-white/[0.04]">
                         <div class="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.03)_1px,_transparent_1px)]" style="background-size: 16px 16px;"></div>

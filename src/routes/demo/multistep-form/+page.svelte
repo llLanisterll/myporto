@@ -120,7 +120,7 @@
 
 <!-- Floating Back Button -->
 <a
-  href="../../#skills"
+  href="/#skills"
   class="fixed top-6 left-6 z-50 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#050505]/80 border border-white/10 shadow-xl backdrop-blur-md text-white/50 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all font-medium text-[13px] group"
 >
   <svg
