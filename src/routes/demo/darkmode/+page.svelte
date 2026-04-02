@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { 
+    :global(body) { 
         font-family: 'Plus Jakarta Sans', sans-serif;
         /* Default Dark Theme Variables */
         --bg-base: #050505;
@@ -45,7 +45,7 @@
     }
 
     /* Light Theme Variables */
-    body.light {
+    :global(body.light) {
         --bg-base: #f4f6f8;
         --bg-surface: #ffffff;
         --bg-glass: rgba(255, 255, 255, 0.7);
@@ -286,22 +286,22 @@
                 </div>
                 <div class="p-6 overflow-x-auto flex-1">
                     <pre class="text-[13px] font-mono leading-loose theme-transition"><code style="color: var(--text-secondary);">/* Master Variables */
-<span style="color: #ff7b72;">body</span> {
+<span style="color: #ff7b72;">body</span> &#123;
   <span style="color: #79c0ff;">--bg-base</span>: <span style="color: #a5d6ff;">#050505</span>;
   <span style="color: #79c0ff;">--text-primary</span>: <span style="color: #a5d6ff;">#ffffff</span>;
   <span style="color: #d2a8ff;">transition</span>: all 0.6s ease;
-}
+&#125;
 
-<span style="color: #ff7b72;">body.light</span> {
+<span style="color: #ff7b72;">body.light</span> &#123;
   <span style="color: #79c0ff;">--bg-base</span>: <span style="color: #a5d6ff;">#f4f6f8</span>;
   <span style="color: #79c0ff;">--text-primary</span>: <span style="color: #a5d6ff;">#0f172a</span>;
-}
+&#125;
 
 <span style="color: #8b949e;">/* Auto-updating component */</span>
-<span style="color: #ff7b72;">.surface-card</span> {
+<span style="color: #ff7b72;">.surface-card</span> &#123;
   <span style="color: #d2a8ff;">background</span>: <span style="color: #ff7b72;">var</span>(--bg-surface);
   <span style="color: #d2a8ff;">border-color</span>: <span style="color: #ff7b72;">var</span>(--border-color);
-}</code></pre>
+&#125;</code></pre>
                 </div>
             </div>
 
