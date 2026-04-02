@@ -22,6 +22,7 @@
 
   let menuOpen = $state(false);
   let isExpanded = $state(false);
+  let showIframes = $state(false);
   let navbar, roleText, parallaxText, scrollTopBtn, bar1, bar2, overlayMenu;
 
   function toggleMenu() {
@@ -77,8 +78,27 @@
     document.querySelectorAll('.reveal,.stagger').forEach(el=>observer.observe(el));
 
     const pl=document.getElementById('preloader'),bw=document.getElementById('body-wrapper');
-    if(sessionStorage.getItem('portfolioLoaded')){if(pl)pl.style.display='none';if(bw){bw.classList.remove('overflow-hidden');bw.classList.add('overflow-x-hidden');}}
-    else{sessionStorage.setItem('portfolioLoaded','true');setTimeout(()=>{if(pl){pl.style.opacity='0';setTimeout(()=>{pl.remove();if(bw){bw.classList.remove('overflow-hidden');bw.classList.add('overflow-x-hidden');}},700);}},4000);}
+    if(sessionStorage.getItem('portfolioLoaded')){
+      if(pl)pl.style.display='none';
+      if(bw){bw.classList.remove('overflow-hidden');bw.classList.add('overflow-x-hidden');}
+      setTimeout(() => showIframes = true, 500);
+    }
+    else{
+      sessionStorage.setItem('portfolioLoaded','true');
+      setTimeout(()=>{
+        if(pl){
+          pl.style.opacity='0';
+          setTimeout(()=>{
+            pl.remove();
+            if(bw){
+              bw.classList.remove('overflow-hidden');
+              bw.classList.add('overflow-x-hidden');
+            }
+            setTimeout(() => showIframes = true, 500);
+          },700);
+        }
+      },1500); // Dikurangi dari 4000ms ke 1500ms agar loading tidak terlalu lama
+    }
 
     const handleAnchorClick = (e) => {
       const anchor = e.target.closest('a[href^="#"]');
@@ -185,7 +205,9 @@
                                     <div class="chrome-url"></div>
                                 </div>
                                 <div class="web-card-body">
-                                    <iframe src={url} loading="lazy" sandbox="allow-same-origin" tabindex="-1" title="Preview"></iframe>
+                                    {#if showIframes}
+                                        <iframe src={url} loading="lazy" sandbox="allow-same-origin" tabindex="-1" title="Preview"></iframe>
+                                    {/if}
                                 </div>
                             </div>
                         {/each}

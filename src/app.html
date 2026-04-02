@@ -9,12 +9,12 @@
 	<body class="antialiased overflow-hidden" id="body-wrapper">
 		<script>
 			// Deteksi apakah user melakukan refresh/reload halaman secara manual
-			const isReload = (window.performance && window.performance.navigation && window.performance.navigation.type === 1) ||
-				(window.performance && window.performance.getEntriesByType && window.performance.getEntriesByType('navigation').length > 0 && window.performance.getEntriesByType('navigation')[0].type === 'reload');
-			if (isReload) {
-				sessionStorage.removeItem('portfolioLoaded');
-				sessionStorage.removeItem('portfolioScrollPos');
-			}
+			// const isReload = (window.performance && window.performance.navigation && window.performance.navigation.type === 1) ||
+			// 	(window.performance && window.performance.getEntriesByType && window.performance.getEntriesByType('navigation').length > 0 && window.performance.getEntriesByType('navigation')[0].type === 'reload');
+			// if (isReload) {
+			// 	sessionStorage.removeItem('portfolioLoaded');
+			// 	sessionStorage.removeItem('portfolioScrollPos');
+			// }
 			if (sessionStorage.getItem('portfolioLoaded')) {
 				document.documentElement.classList.add('hide-preloader');
 			}
