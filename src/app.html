@@ -8,7 +8,15 @@
 	</head>
 	<body class="antialiased" id="body-wrapper">
 		<script>
-			// Cek session loaded untuk menyembunyikan preloader
+			// Clear session ONLY if user loads the HOME PAGE natively (F5 or direct link)
+			// This prevents the preloader from showing when client-navigating back from demos!
+			if (window.location.pathname === '/') {
+				const navType = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type) || '';
+				if (navType === 'reload' || navType === 'navigate') {
+					sessionStorage.removeItem('portfolioLoaded');
+				}
+			}
+			
 			if (sessionStorage.getItem('portfolioLoaded')) {
 				document.documentElement.classList.add('hide-preloader');
 			}
