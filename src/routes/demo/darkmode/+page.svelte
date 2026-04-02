@@ -15,7 +15,10 @@
 
   onDestroy(() => {
     // Ensure the light mode class doesn't leak to the homepage when navigating away
-    document.body.classList.remove('light');
+    // We check for document because onDestroy runs during Server Side Rendering (SSR) too!
+    if (typeof document !== 'undefined') {
+      document.body.classList.remove('light');
+    }
   });
 </script>
 
