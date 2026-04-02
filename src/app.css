@@ -349,6 +349,8 @@ body {
 }
 
 .pl-reveal-anim {
+    opacity: 0;
+    visibility: hidden;
     animation: phase2-show 0.1s linear 2.1s forwards;
 }
 @keyframes phase2-show {

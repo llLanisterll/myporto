@@ -143,7 +143,7 @@
             <span class="font-bold">Digital</span>
             <span class="font-light">Experiences</span>
         </div>
-        <div id="pl-phase-2" class="absolute text-4xl sm:text-5xl font-logo text-white font-bold opacity-0 invisible pl-reveal-anim">
+        <div id="pl-phase-2" class="absolute text-4xl sm:text-5xl font-logo text-white font-bold pl-reveal-anim">
             <span class="relative z-10 pl-reveal-text">Sarham San</span>
             <div class="pl-reveal-block"></div>
         </div>
