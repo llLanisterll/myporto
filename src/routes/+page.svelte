@@ -97,7 +97,7 @@
             setTimeout(() => showIframes = true, 500);
           },700);
         }
-      },1500); // Dikurangi dari 4000ms ke 1500ms agar loading tidak terlalu lama
+      },3800);
     }
 
     const handleAnchorClick = (e) => {
