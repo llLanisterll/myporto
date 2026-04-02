@@ -8,14 +8,7 @@
 	</head>
 	<body class="antialiased" id="body-wrapper">
 		<script>
-			// Deteksi apakah user melakukan refresh/reload halaman secara manual
-			const navType = (window.performance && window.performance.getEntriesByType && window.performance.getEntriesByType('navigation').length > 0)
-				? window.performance.getEntriesByType('navigation')[0].type : '';
-			const isReload = navType === 'reload' || navType === 'navigate';
-			if (isReload) {
-				sessionStorage.removeItem('portfolioLoaded');
-				sessionStorage.removeItem('portfolioScrollPos');
-			}
+			// Cek session loaded untuk menyembunyikan preloader
 			if (sessionStorage.getItem('portfolioLoaded')) {
 				document.documentElement.classList.add('hide-preloader');
 			}

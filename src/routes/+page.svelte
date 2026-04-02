@@ -89,7 +89,7 @@
         if(pl){
           pl.style.opacity='0';
           setTimeout(()=>{
-            pl.remove();
+            pl.style.display='none';
             if(bw){
               bw.classList.remove('overflow-hidden');
               bw.classList.add('overflow-x-hidden');
