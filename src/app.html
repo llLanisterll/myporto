@@ -8,13 +8,28 @@
 	</head>
 	<body class="antialiased" id="body-wrapper">
 		<script>
-			// Clear session ONLY if user loads the HOME PAGE natively (F5 or direct link)
-			// This prevents the preloader from showing when client-navigating back from demos!
-			if (window.location.pathname === '/') {
-				const navType = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type) || '';
-				if (navType === 'reload' || navType === 'navigate') {
-					sessionStorage.removeItem('portfolioLoaded');
+			// Failsafe perlindungan anti-stuck loading screen
+			// Jika terjadi error hydration pada Svelte, preloader tetap akan terhapus setelah 4.2 detik.
+			setTimeout(() => {
+				const pl = document.getElementById('preloader');
+				const bw = document.getElementById('body-wrapper');
+				if (pl) pl.style.display = 'none';
+				if (bw) {
+					bw.classList.remove('overflow-hidden');
+					bw.classList.add('overflow-x-hidden');
 				}
+				document.documentElement.classList.add('hide-preloader');
+			}, 4200);
+
+			// Clear session ONLY if user loads the HOME PAGE natively (F5 or direct link)
+			if (window.location.pathname === '/') {
+				try {
+					const navEntries = window.performance && window.performance.getEntriesByType && window.performance.getEntriesByType('navigation');
+					const navType = (navEntries && navEntries.length > 0) ? navEntries[0].type : '';
+					if (navType === 'reload' || navType === 'navigate' || navType === 'back_forward') {
+						sessionStorage.removeItem('portfolioLoaded');
+					}
+				} catch (e) { console.error('Navigation timing API unsupported'); }
 			}
 			
 			if (sessionStorage.getItem('portfolioLoaded')) {
